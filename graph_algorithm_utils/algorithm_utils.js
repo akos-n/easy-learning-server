@@ -8,16 +8,12 @@ class Stack {
   }
 
   pop() {
-    if (this.isEmpty()) throw "The stack is empty!";
+    if (this.isEmpty()) throw new Error("The stack is empty!");
     return this.items.pop();
   }
 
   top() {
     return this.items[this.items.length - 1];
-  }
-
-  isFull() {
-    return false;
   }
 
   isEmpty() {
@@ -55,21 +51,17 @@ class Queue {
   }
 
   rem() {
-    if (this.isEmpty()) throw "Queue is empty!";
+    if (this.isEmpty()) throw new Error("Queue is empty!");
     return this.items.shift();
   }
 
   first() {
-    if (this.isEmpty()) throw "Queue is empty!";
+    if (this.isEmpty()) throw new Error("Queue is empty!");
     return this.items[0];
   }
 
   length() {
     return this.items.length;
-  }
-
-  isFull() {
-    return false;
   }
 
   isEmpty() {
@@ -119,7 +111,7 @@ class PriorityQueue {
   }
 
   buildMaxHeap() {
-    for (let i = this.items.length - 1; i >= 0; --i) {
+    for (let i = this.parent(this.items.length - 1); i >= 0; --i) {
       this.sink(i);
     }
   }
@@ -130,17 +122,16 @@ class PriorityQueue {
   }
 
   remMax() {
-    if (this.isEmpty()) throw "Empty priority queue!";
+    if (this.isEmpty()) throw new Error("Empty priority queue!");
     let max = this.items[0];
     if (this.items.length > 1) this.items[0] = this.items.pop();
     else this.items.pop();
-    this.buildMaxHeap();
-    // this.sink(0); sink(0) doesn't stay max heap...
+    this.sink(0);
     return max;
   }
 
   max() {
-    if (this.isEmpty()) throw "Empty priority queue!";
+    if (this.isEmpty()) throw new Error("Empty priority queue!");
     return this.items[0];
   }
 
@@ -175,7 +166,7 @@ class PriorityQueue {
       }
       if (this.sortFunction(this.items[i], this.items[j], this.sortByList)) {
         this.swap(i, j);
-        i = j - 1;
+        i = j;
         j = this.left(j);
       } else {
         b = false;

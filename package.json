@@ -1,12 +1,14 @@
 {
   "name": "easy-learning-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "12.13.1",
     "npm": "6.12.1"
   },
   "scripts": {
+    "test": "jest",
+    "prestart": "npm test",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -24,5 +26,14 @@
     "cors": "^2.8.5",
     "nodemailer": "^6.4.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^25.4.0",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
 }
