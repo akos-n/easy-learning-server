@@ -6,7 +6,6 @@ const GraphSchema = require("../schemas/GraphSchema");
 const db = mongoose.model("graphs", GraphSchema);
 
 router.post("/get", function (req, res, next) {
-  console.log(req.body);
   db.findOne(
     {
       $or: [
@@ -18,7 +17,6 @@ router.post("/get", function (req, res, next) {
     (err, data) => {
       if (err) res.json(JSON.stringify({ success: false, err: err }));
       else {
-        console.log(data);
         if (data !== null) {
           res.json({
             success: true,
@@ -55,7 +53,6 @@ router.post("/save", function (req, res, next) {
   req.body.normalGraph = JSON.stringify(req.body.normalGraph);
   req.body.directedGraph = JSON.stringify(req.body.directedGraph);
   req.body.vertices = JSON.stringify(req.body.vertices);
-  console.log(req.body);
   db.create(req.body)
     .then(() => res.json(JSON.stringify({ success: true })))
     .catch((err) => {

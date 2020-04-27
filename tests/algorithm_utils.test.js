@@ -1,5 +1,4 @@
 let utils = require("../graph_algorithm_utils/algorithm_utils");
-const { Vertex } = require("../graph_algorithm_utils/graph");
 
 describe("Test Class: Stack", () => {
   let stack = new utils.Stack();
@@ -135,6 +134,13 @@ describe("Test Class: Queue", () => {
 
 describe("Test Class: PriorityQueue", () => {
   describe("Test Case: PriorityQueue with Minimum sort function", () => {
+    test("Test Function: constructor with sortByList", () => {
+      const tempQueue = new utils.PriorityQueue(() => {
+        return true;
+      }, [2, 3, 4, 5]);
+      expect(tempQueue.sortByList).toEqual([2, 3, 4, 5]);
+    });
+
     let pQueue = new utils.PriorityQueue(
       jest.fn((a, b) => {
         return a > b;
@@ -158,7 +164,15 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.items.length).toBe(0);
     });
 
-    test("Test Function: remMax (empty queue)", () => {
+    test("Test Function: remMax (remove last item)", () => {
+      expect(pQueue.items.length).toBe(0);
+      pQueue.add(0);
+      expect(pQueue.items.length).toBe(1);
+      expect(pQueue.remMax()).toBe(0);
+      expect(pQueue.items.length).toBe(0);
+    });
+
+    test("Test Function: max (empty queue)", () => {
       expect(pQueue.items.length).toBe(0);
       expect(() => {
         pQueue.max();

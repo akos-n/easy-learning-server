@@ -195,7 +195,6 @@ router.post("/forgotten-datas", (req, res, next) => {
 router.post("/update-password", (req, res, next) => {
   db.findOne({ _id: req.body.userId, username: req.body.username }).then(
     (result) => {
-      console.log(result);
       if (result)
         bcrypt
           .compare(req.body.oldPassword, result.password)

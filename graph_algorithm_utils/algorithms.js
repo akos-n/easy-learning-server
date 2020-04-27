@@ -55,24 +55,6 @@ class AlgorithmSteps {
   addStep(step) {
     this.steps.push(step);
   }
-
-  nextStep() {
-    if (this.currentStepIndex < this.steps.length) this.currentStepIndex++;
-    return this.steps[this.currentStepIndex];
-  }
-
-  currentStep() {
-    return this.steps[this.currentStepIndex];
-  }
-
-  prevStep() {
-    if (this.currentStepIndex !== 0) this.currentStepIndex--;
-    return this.steps[this.currentStepIndex];
-  }
-
-  getAlgorithmType() {
-    return this.algorithmType;
-  }
 }
 
 class Step {
@@ -293,10 +275,6 @@ class Algorithm {
     return inDegreeCounter;
   }
 
-  static outDegreeOfVertexInGraph(graph, vertex) {
-    return graph.adjList.get(vertex).length;
-  }
-
   static topo(graph) {
     if (!graph.directed)
       throw new Error(
@@ -325,7 +303,6 @@ class Algorithm {
     );
     let i = 0;
     while (!stack.isEmpty()) {
-      console.log(inDegrees);
       let currentVertex = stack.pop();
       i++;
       topologicalOrder.push(currentVertex);
@@ -474,10 +451,7 @@ class Algorithm {
     return algorithmSteps;
   }
 
-  static primMST(
-    graph,
-    startingVertex // TODO save chosen edges and change vertices color.
-  ) {
+  static primMST(graph, startingVertex) {
     let algorithmSteps = new AlgorithmSteps(AlgorithmType.PRIM);
 
     let primVertices = [];
@@ -751,7 +725,6 @@ class Algorithm {
             for (let edge of graph.adjList.get(i)) {
               if (edge.toVertex === j) return edge;
             }
-            return null;
           })();
           distanceMatrix[i][j] = edge.weight;
           parentMatrix[i][j] = i;
