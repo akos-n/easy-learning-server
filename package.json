@@ -28,8 +28,7 @@
     "cors": "^2.8.5",
     "nodemailer": "^6.4.6"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
