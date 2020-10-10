@@ -62,10 +62,12 @@ router.post("/save", function (req, res, next) {
       if (err) res.json(JSON.stringify({ success: false, err: err }));
       else {
         if (data !== null) {
-          res.json({
-            success: false,
-            err: "Graph with the given name is already exists!",
-          });
+          res.json(
+            JSON.stringify({
+              success: false,
+              err: "Graph with the given name is already exists!",
+            })
+          );
         } else {
           req.body.normalGraph = JSON.stringify(req.body.normalGraph);
           req.body.directedGraph = JSON.stringify(req.body.directedGraph);
