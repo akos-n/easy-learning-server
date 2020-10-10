@@ -57,7 +57,7 @@ router.post("/save", function (req, res, next) {
         { userId: "guest", graphName: req.body.graphName },
       ],
     },
-    "-normalGraph -directedGraph -vertices _id",
+    "_id",
     (err, data) => {
       if (err) res.json(JSON.stringify({ success: false, err: err }));
       else {
