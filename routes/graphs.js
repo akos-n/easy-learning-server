@@ -50,14 +50,36 @@ router.post("/get-all-names", function (req, res, next) {
 });
 
 router.post("/save", function (req, res, next) {
-  req.body.normalGraph = JSON.stringify(req.body.normalGraph);
-  req.body.directedGraph = JSON.stringify(req.body.directedGraph);
-  req.body.vertices = JSON.stringify(req.body.vertices);
-  db.create(req.body)
-    .then(() => res.json(JSON.stringify({ success: true })))
-    .catch((err) => {
-      res.json(JSON.stringify({ success: false, err: err }));
-    });
+  db.findOne(
+    {
+      $or: [
+        { userId: req.body.userId, graphName: req.body.graphName },
+        { userId: "guest", graphName: req.body.graphName },
+      ],
+    },
+    "-normalGraph -directedGraph -vertices _id",
+    (err, data) => {
+      if (err) res.json(JSON.stringify({ success: false, err: err }));
+      else {
+        if (data !== null) {
+          res.json({
+            success: false,
+            err: "Graph with the given name is already exists!",
+          });
+        } else {
+          req.body.normalGraph = JSON.stringify(req.body.normalGraph);
+          req.body.directedGraph = JSON.stringify(req.body.directedGraph);
+          req.body.vertices = JSON.stringify(req.body.vertices);
+
+          db.create(req.body)
+            .then(() => res.json(JSON.stringify({ success: true })))
+            .catch((err) => {
+              res.json(JSON.stringify({ success: false, err: err }));
+            });
+        }
+      }
+    }
+  );
 });
 
 module.exports = router;
