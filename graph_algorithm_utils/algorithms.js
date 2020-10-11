@@ -700,7 +700,7 @@ class Algorithm {
       );
     }
     algorithmSteps.addStep({
-      currentStepIndex: i+1,
+      currentStepIndex: -2,
       vertices: dijkstraVertices,
       queue: queue,
       chosenEdges: chosenEdges,
