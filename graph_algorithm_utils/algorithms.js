@@ -656,6 +656,7 @@ class Algorithm {
     let chosenEdges = [];
     algorithmSteps.addStep(
       new Step({
+        currentStepIndex: -1,
         vertices: dijkstraVertices,
         queue: queue,
         currentVertex: currentVertex,
@@ -690,6 +691,7 @@ class Algorithm {
       }
       algorithmSteps.addStep(
         new Step({
+          currentStepIndex: i,
           vertices: dijkstraVertices,
           queue: queue,
           currentVertex: currentVertex,
