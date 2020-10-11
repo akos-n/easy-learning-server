@@ -699,7 +699,12 @@ class Algorithm {
         })
       );
     }
-
+    algorithmSteps.addStep({
+      currentStepIndex: i+1,
+      vertices: dijkstraVertices,
+      queue: queue,
+      chosenEdges: chosenEdges,
+    });
     return algorithmSteps;
   }
 
