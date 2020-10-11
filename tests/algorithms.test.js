@@ -992,7 +992,7 @@ describe("Test Class: Algorithm", () => {
     let result = Algorithm.dijkstra(graphDIJKSTRA, 0);
 
     test("Result: number of steps", () => {
-      expect(result.steps.length).toBe(6);
+      expect(result.steps.length).toBe(7);
     });
 
     test("Result: first step", () => {
@@ -1003,6 +1003,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[0].vertices[3].color).toBe(Color.WHITE);
       expect(result.steps[0].vertices[4].color).toBe(Color.WHITE);
       expect(result.steps[0].currentVertex).toBe(null);
+      expect(result.steps[0].step).toBe(-1);
       expect(result.steps[0].queue.items).toEqual([0, 1, 2, 3, 4]);
       expect(result.steps[0].chosenEdges).toEqual([]);
     });
@@ -1015,6 +1016,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].vertices[3].color).toBe(Color.BLACK);
       expect(result.steps[3].vertices[4].color).toBe(Color.WHITE);
       expect(result.steps[3].currentVertex).toBe(1);
+      expect(result.steps[3].step).toBe(2);
       expect(result.steps[3].queue.items).toEqual([2, 4]);
       expect(result.steps[3].chosenEdges).toEqual([
         { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
@@ -1030,9 +1032,27 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[5].vertices[2].color).toBe(Color.BLACK);
       expect(result.steps[5].vertices[3].color).toBe(Color.BLACK);
       expect(result.steps[5].vertices[4].color).toBe(Color.BLACK);
+      expect(result.steps[5].step).toBe(4);
       expect(result.steps[5].currentVertex).toBe(4);
       expect(result.steps[5].queue.items).toEqual([]);
       expect(result.steps[5].chosenEdges).toEqual([
+        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
+        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 0 },
+      ]);
+    });
+
+    test("Result: end step", () => {
+      expect(result.steps[6].vertices.length).toBe(5);
+      expect(result.steps[6].vertices[0].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[1].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[2].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[3].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[4].color).toBe(Color.BLACK);
+      expect(result.steps[6].step).toBe(-2);
+      expect(result.steps[6].currentVertex).toBe(null);
+      expect(result.steps[6].queue.items).toEqual([]);
+      expect(result.steps[6].chosenEdges).toEqual([
         { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
         { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
         { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 0 },

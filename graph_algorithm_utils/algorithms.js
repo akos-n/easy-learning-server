@@ -656,7 +656,7 @@ class Algorithm {
     let chosenEdges = [];
     algorithmSteps.addStep(
       new Step({
-        currentStepIndex: -1,
+        step: -1,
         vertices: dijkstraVertices,
         queue: queue,
         currentVertex: currentVertex,
@@ -673,6 +673,7 @@ class Algorithm {
       chosenEdges.push(edge);
       return chosenEdges;
     };
+    let i = 0;
     while (!queue.isEmpty()) {
       currentVertex = queue.remMax();
       dijkstraVertices[currentVertex].color = Color.BLACK;
@@ -691,20 +692,25 @@ class Algorithm {
       }
       algorithmSteps.addStep(
         new Step({
-          currentStepIndex: i,
+          step: i,
           vertices: dijkstraVertices,
           queue: queue,
           currentVertex: currentVertex,
           chosenEdges: chosenEdges,
         })
       );
+      console.log(algorithmSteps.steps[i].currentStepIndex);
+      ++i;
     }
-    algorithmSteps.addStep({
-      currentStepIndex: -2,
-      vertices: dijkstraVertices,
-      queue: queue,
-      chosenEdges: chosenEdges,
-    });
+    algorithmSteps.addStep(
+      new Step({
+        step: -2,
+        vertices: dijkstraVertices,
+        queue: queue,
+        currentVertex: null,
+        chosenEdges: chosenEdges,
+      })
+    );
     return algorithmSteps;
   }
 
