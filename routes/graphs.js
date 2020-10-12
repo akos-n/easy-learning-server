@@ -31,7 +31,12 @@ router.post("/get", function (req, res, next) {
             vertices: data.vertices,
           });
         } else {
-          res.json({ success: false, err: "Graph not found in the database!" });
+          res.json(
+            JSON.stringify({
+              success: false,
+              err: "Graph not found in the database!",
+            })
+          );
         }
       }
     }
@@ -43,13 +48,20 @@ router.post("/get-all-names", function (req, res, next) {
     { $or: [{ userId: req.body.userId }, { userId: "guest" }] },
     "graphName -_id",
     (err, data) => {
-      if (err) res.json(JSON.stringify(err));
+      if (err)
+        res.json(
+          JSON.stringify({
+            success: false,
+            err:
+              "Something went wrong and the application couldn't access the loadable graphs' names!",
+          })
+        );
       else {
         let graphNames = [];
         for (object of data) {
           graphNames.push(object.graphName);
         }
-        res.json(JSON.stringify(graphNames));
+        res.json(JSON.stringify({ success: true, graphNames: graphNames }));
       }
     }
   );

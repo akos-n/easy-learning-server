@@ -699,7 +699,6 @@ class Algorithm {
           chosenEdges: chosenEdges,
         })
       );
-      console.log(algorithmSteps.steps[i].currentStepIndex);
       ++i;
     }
     algorithmSteps.addStep(
