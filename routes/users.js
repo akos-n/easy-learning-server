@@ -19,7 +19,24 @@ router.post("/register", (req, res, next) => {
       db.create(newUser)
         .then(() => res.json(JSON.stringify({ success: true })))
         .catch((err) => {
-          res.json(JSON.stringify({ success: false, err: err.message }));
+          res.json(
+            JSON.stringify({
+              success: false,
+              err: (() => {
+                let errMsg = "";
+                if (err.errors.username) {
+                  errMsg += "Username already exists in the database.\n";
+                }
+                if (err.errors.email) {
+                  errMsg += "Email already exists in the database.\n";
+                }
+                if (errMsg === "") {
+                  errMsg = err.message;
+                }
+                return errMsg;
+              })(),
+            })
+          );
         });
     })
     .catch((err) =>
