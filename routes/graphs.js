@@ -15,7 +15,13 @@ router.post("/get", function (req, res, next) {
     },
     "normalGraph directedGraph vertices -_id",
     (err, data) => {
-      if (err) res.json(JSON.stringify({ success: false, err: err }));
+      if (err)
+        res.json(
+          JSON.stringify({
+            success: false,
+            err: "Something went wrong. Please try again later!",
+          })
+        );
       else {
         if (data !== null) {
           res.json({
@@ -25,7 +31,7 @@ router.post("/get", function (req, res, next) {
             vertices: data.vertices,
           });
         } else {
-          res.json({ success: false, err: "Graph not found!" });
+          res.json({ success: false, err: "Graph not found in the database!" });
         }
       }
     }
@@ -59,7 +65,13 @@ router.post("/save", function (req, res, next) {
     },
     "_id",
     (err, data) => {
-      if (err) res.json(JSON.stringify({ success: false, err: err }));
+      if (err)
+        res.json(
+          JSON.stringify({
+            success: false,
+            err: "Something went wrong. Please try again later!",
+          })
+        );
       else {
         if (data !== null) {
           res.json(
@@ -76,7 +88,12 @@ router.post("/save", function (req, res, next) {
           db.create(req.body)
             .then(() => res.json(JSON.stringify({ success: true })))
             .catch((err) => {
-              res.json(JSON.stringify({ success: false, err: err }));
+              res.json(
+                JSON.stringify({
+                  success: false,
+                  err: "Something went wrong. Please try again later!",
+                })
+              );
             });
         }
       }

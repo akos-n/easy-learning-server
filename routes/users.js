@@ -31,7 +31,7 @@ router.post("/register", (req, res, next) => {
                   errMsg += "Email already exists in the database.\n";
                 }
                 if (errMsg === "") {
-                  errMsg = err.message;
+                  errMsg = "Something went wrong. Please try again later!";
                 }
                 return errMsg;
               })(),
@@ -43,8 +43,7 @@ router.post("/register", (req, res, next) => {
       res.json(
         JSON.stringify({
           success: false,
-          err:
-            "Registration failed on the server's side, please try again a few minutes later!",
+          err: "Something went wrong. Please try again later!",
         })
       )
     );
@@ -60,23 +59,22 @@ router.post("/login", (req, res, next) => {
       bcrypt
         .compare(req.body.password, result.password)
         .then((value) => {
-          if (value === true)
+          if (value === true) {
             res.json(
               JSON.stringify({
                 success: true,
-
                 needNewPassword: false,
                 id: result._id,
                 username: req.body.username,
               })
             );
-          else
+          } else {
             resetDb.findOne({ userId: result._id }, (err, resetResult) => {
-              if (resetResult)
+              if (resetResult) {
                 bcrypt
                   .compare(req.body.password, resetResult.newPassword)
                   .then((value) => {
-                    if (value === true)
+                    if (value === true) {
                       res.json(
                         JSON.stringify({
                           success: true,
@@ -85,38 +83,39 @@ router.post("/login", (req, res, next) => {
                           username: req.body.username,
                         })
                       );
-                    else
+                    } else {
                       res.json(
                         JSON.stringify({
                           success: false,
                           err: "Invalid username or password!",
                         })
                       );
+                    }
                   })
                   .catch((err) =>
                     res.json(
                       JSON.stringify({
                         success: false,
-                        err:
-                          "Login failed on the server's side, please try again a few minutes later!",
+                        err: "Something went wrong. Please try again later!",
                       })
                     )
                   );
-              else
+              } else {
                 res.json(
                   JSON.stringify({
                     success: false,
                     err: "Invalid username or password!",
                   })
                 );
+              }
             });
+          }
         })
         .catch((err) =>
           res.json(
             JSON.stringify({
               success: false,
-              err:
-                "Login failed on the server's side, please try again a few minutes later!",
+              err: "Something went wrong. Please try again later!",
             })
           )
         );
@@ -154,7 +153,7 @@ router.post("/forgotten-datas", (req, res, next) => {
                     res.json(
                       JSON.stringify({
                         success: false,
-                        err: "Failed to create a new password.",
+                        err: "Something went wrong. Please try again later!",
                       })
                     );
                   const nodemailer = require("nodemailer");
@@ -176,7 +175,8 @@ router.post("/forgotten-datas", (req, res, next) => {
                       res.json(
                         JSON.stringify({
                           success: false,
-                          err: err.message,
+                          err:
+                            "Something went wrong and we cannot send you the email. Please try again later!",
                         })
                       );
                     } else {
@@ -191,7 +191,10 @@ router.post("/forgotten-datas", (req, res, next) => {
                 })
                 .catch((err) => {
                   res.json(
-                    JSON.stringify({ success: false, err: err.message })
+                    JSON.stringify({
+                      success: false,
+                      err: "Something went wrong. Please try again later!",
+                    })
                   );
                 });
             });
@@ -200,8 +203,7 @@ router.post("/forgotten-datas", (req, res, next) => {
           res.json(
             JSON.stringify({
               success: false,
-              err:
-                "Registration failed on the server's side, please try again a few minutes later!",
+              err: "Something went wrong. Please try again later!",
             })
           )
         );
@@ -238,7 +240,8 @@ router.post("/update-password", (req, res, next) => {
                               res.json(
                                 JSON.stringify({
                                   success: false,
-                                  err: "Update failed, please try again later!",
+                                  err:
+                                    "Something went wrong. Please try again later!",
                                 })
                               );
                           })
@@ -246,20 +249,30 @@ router.post("/update-password", (req, res, next) => {
                             res.json(
                               JSON.stringify({
                                 success: false,
-                                err: "Update failed, please try again later!",
+                                err:
+                                  "Something went wrong. Please try again later!",
                               })
                             );
                           });
                       })
                       .catch((err) =>
                         res.json(
-                          JSON.stringify({ success: false, err: err.message })
+                          JSON.stringify({
+                            success: false,
+                            err:
+                              "Something went wrong. Please try again later!",
+                          })
                         )
                       );
                   });
                 })
                 .catch((err) =>
-                  res.json(JSON.stringify({ success: false, err: err.message }))
+                  res.json(
+                    JSON.stringify({
+                      success: false,
+                      err: "Something went wrong. Please try again later!",
+                    })
+                  )
                 );
             } else {
               resetDb
@@ -300,7 +313,7 @@ router.post("/update-password", (req, res, next) => {
                                             JSON.stringify({
                                               success: false,
                                               err:
-                                                "Update failed, please try again later!",
+                                                "Something went wrong. Please try again later!",
                                             })
                                           );
                                       })
@@ -309,7 +322,7 @@ router.post("/update-password", (req, res, next) => {
                                           JSON.stringify({
                                             success: false,
                                             err:
-                                              "Update failed, please try again later!",
+                                              "Something went wrong. Please try again later!",
                                           })
                                         );
                                       });
@@ -318,7 +331,8 @@ router.post("/update-password", (req, res, next) => {
                                     res.json(
                                       JSON.stringify({
                                         success: false,
-                                        err: err.message,
+                                        err:
+                                          "Something went wrong. Please try again later!",
                                       })
                                     )
                                   );
@@ -328,7 +342,8 @@ router.post("/update-password", (req, res, next) => {
                               res.json(
                                 JSON.stringify({
                                   success: false,
-                                  err: err.message,
+                                  err:
+                                    "Something went wrong. Please try again later!",
                                 })
                               )
                             );
@@ -351,13 +366,18 @@ router.post("/update-password", (req, res, next) => {
             }
           })
           .catch((err) =>
-            res.json(JSON.stringify({ success: false, err: err.message }))
+            res.json(
+              JSON.stringify({
+                success: false,
+                err: "Something went wrong. Please try again later!",
+              })
+            )
           );
       else
         res.json(
           JSON.stringify({
             success: false,
-            err: "User was not found in the database!",
+            err: "Something went wrong. Please try again later!",
           })
         );
     }
