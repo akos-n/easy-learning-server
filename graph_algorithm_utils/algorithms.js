@@ -229,8 +229,14 @@ class Algorithm {
     let queue = new Queue();
     queue.add(startingNode);
 
+    let chosenEdges = [];
     algorithmSteps.addStep(
-      new Step({ vertices: vertices, queue: queue, currentVertex: -1 })
+      new Step({
+        vertices: vertices,
+        queue: queue,
+        currentVertex: -1,
+        chosenEdges: chosenEdges,
+      })
     );
     while (!queue.isEmpty()) {
       let currentVertex = queue.rem();
@@ -239,6 +245,8 @@ class Algorithm {
           vertices[graph.adjList.get(currentVertex)[i].toVertex].color ===
           Color.WHITE
         ) {
+          chosenEdges.push(graph.adjList.get(currentVertex)[i]);
+          chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
           vertices[graph.adjList.get(currentVertex)[i].toVertex].depth =
             vertices[currentVertex].depth + 1;
           vertices[
@@ -255,6 +263,7 @@ class Algorithm {
           vertices: vertices,
           queue: queue,
           currentVertex: currentVertex,
+          chosenEdges: chosenEdges,
         })
       );
     }
