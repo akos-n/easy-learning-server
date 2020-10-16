@@ -179,6 +179,8 @@ const Color = {
   WHITE: "rgb(248,248,255)",
   GRAY: "rgb(105,105,105)",
   RED: "rgb(255,0,0)",
+  ORANGE: "rgb(255,128,0)",
+  BLUE: "rgb(0,0,128)",
   PALE_RED: "rgb(205,65,65)",
   GREEN: "rgb(0, 128, 0)",
   BLACK: "rgb(0,0,0)",

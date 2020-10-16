@@ -105,8 +105,17 @@ function randInt(to, from = 0) {
   return Math.floor(Math.random() * to) + from;
 }
 
-function dfsVisit(graph, indexOfCurrentVertex, vertices, time, algorithmSteps) {
+function dfsVisit(
+  graph,
+  indexOfCurrentVertex,
+  vertices,
+  time,
+  algorithmSteps,
+  chosenEdges,
+  verticesInBranch
+) {
   time.push(0);
+  verticesInBranch.push(indexOfCurrentVertex);
   vertices[indexOfCurrentVertex].discoveryTime = time.length;
   vertices[indexOfCurrentVertex].color = Color.GRAY;
   algorithmSteps.addStep(new Step({ vertices: vertices }));
@@ -115,6 +124,8 @@ function dfsVisit(graph, indexOfCurrentVertex, vertices, time, algorithmSteps) {
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
       Color.WHITE
     ) {
+      chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
+      chosenEdges[chosenEdges.length - 1].color = Color.PALE_RED;
       vertices[
         graph.adjList.get(indexOfCurrentVertex)[i].toVertex
       ].parent = indexOfCurrentVertex;
@@ -123,20 +134,33 @@ function dfsVisit(graph, indexOfCurrentVertex, vertices, time, algorithmSteps) {
         graph.adjList.get(indexOfCurrentVertex)[i].toVertex,
         vertices,
         time,
-        algorithmSteps
+        algorithmSteps,
+        chosenEdges,
+        verticesInBranch
       );
     } else if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
       Color.GRAY
     ) {
-      // backwardEdge(currentVertex, vertices[i]);
+      // backward edge
+      chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
+      chosenEdges[chosenEdges.length - 1].color = Color.BLUE;
     } else if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
       Color.BLACK
     ) {
-      // crossEdge(currentVertex, vertices[i]);
-      // or
-      // forwardEdge(currentVertex, vertices[i]);
+      chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
+      // cross edge
+      if (
+        verticesInBranch.includes(
+          vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex]
+        )
+      ) {
+        chosenEdges[chosenEdges.length - 1].color = Color.ORANGE;
+      } else {
+        // forward edge
+        chosenEdges[chosenEdges.length - 1].color = Color.GREEN;
+      }
     }
   }
   vertices[indexOfCurrentVertex].color = Color.BLACK;
@@ -245,13 +269,28 @@ class Algorithm {
       vertices[i] = new Vertex();
     }
     let time = [];
-    algorithmSteps.addStep(new Step({ vertices: vertices }));
+    let chosenEdges = [];
+    algorithmSteps.addStep(
+      new Step({ vertices: vertices, chosenEdges: chosenEdges })
+    );
 
     for (let i = 0; i < vertices.length; ++i) {
-      if (vertices[i].color === Color.WHITE)
-        dfsVisit(graph, i, vertices, time, algorithmSteps);
+      if (vertices[i].color === Color.WHITE) {
+        let verticesInBranch = [];
+        dfsVisit(
+          graph,
+          i,
+          vertices,
+          time,
+          algorithmSteps,
+          chosenEdges,
+          verticesInBranch
+        );
+      }
     }
-    algorithmSteps.addStep(new Step({ vertices: vertices }));
+    algorithmSteps.addStep(
+      new Step({ vertices: vertices, chosenEdges: chosenEdges })
+    );
 
     return algorithmSteps;
   }
