@@ -152,16 +152,16 @@ function dfsVisit(
       Color.BLACK
     ) {
       chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
-      // cross edge
+      // forward edge
       if (
         verticesInBranch.includes(
           graph.adjList.get(indexOfCurrentVertex)[i].toVertex
         )
       ) {
-        chosenEdges[chosenEdges.length - 1].color = Color.ORANGE;
-      } else {
-        // forward edge
         chosenEdges[chosenEdges.length - 1].color = Color.GREEN;
+      } else {
+        // cross edge
+        chosenEdges[chosenEdges.length - 1].color = Color.ORANGE;
       }
     }
   }
