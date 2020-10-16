@@ -185,6 +185,8 @@ const Color = {
   DARK_RED: "rgb(139, 0, 0)",
   GREEN: "rgb(0, 128, 0)",
   BLACK: "rgb(0,0,0)",
+  LIGHT_BLUE: "rgb(102,255,255)",
+  MENTA: "rgb(0,153,76)",
 };
 
 function copy(obj) {

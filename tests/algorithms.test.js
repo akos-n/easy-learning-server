@@ -161,9 +161,9 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: second step", () => {
       expect(result.steps[1].vertices.length).toBe(6);
-      expect(result.steps[1].vertices[5].color).toBe(Color.BLACK);
-      expect(result.steps[1].vertices[2].color).toBe(Color.GRAY);
-      expect(result.steps[1].vertices[4].color).toBe(Color.GRAY);
+      expect(result.steps[1].vertices[5].color).toBe(Color.MENTA);
+      expect(result.steps[1].vertices[2].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[1].vertices[4].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[1].queue.items.length).toBe(2);
       expect(result.steps[1].queue.items).toEqual([2, 4]);
       expect(result.steps[1].currentVertex).toBe(5);
@@ -171,12 +171,12 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: last step", () => {
       expect(result.steps[6].vertices.length).toBe(6);
-      expect(result.steps[6].vertices[0].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[1].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[2].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[3].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[4].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[5].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[0].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[1].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[2].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[3].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[4].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[5].color).toBe(Color.MENTA);
       expect(result.steps[6].queue.items.length).toBe(0);
       expect(result.steps[6].queue.items).toEqual([]);
       expect(result.steps[6].currentVertex).toBe(1);
@@ -246,10 +246,10 @@ describe("Test Class: Algorithm", () => {
     test("Result: fifth step", () => {
       for (let i = 0; i < result.steps[4].vertices.length; ++i) {
         if ([0, 1, 2, 3].includes(i)) {
-          expect(result.steps[4].vertices[i].color).toBe(Color.GRAY);
+          expect(result.steps[4].vertices[i].color).toBe(Color.LIGHT_BLUE);
           expect(result.steps[4].vertices[i].discoveryTime).not.toBe(0);
         } else if ([].includes(i)) {
-          expect(result.steps[4].vertices[i].color).toBe(Color.BLACK);
+          expect(result.steps[4].vertices[i].color).toBe(Color.MENTA);
           expect(result.steps[4].vertices[i].discoveryTime).not.toBe(0);
           expect(result.steps[4].vertices[i].finishingTime).not.toBe(0);
         } else {
@@ -261,7 +261,7 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: last step", () => {
       for (let i = 0; i < result.steps[17].vertices.length; ++i) {
-        expect(result.steps[17].vertices[i].color).toBe(Color.BLACK);
+        expect(result.steps[17].vertices[i].color).toBe(Color.MENTA);
         expect(result.steps[17].vertices[i].discoveryTime).not.toBe(0);
         expect(result.steps[17].vertices[i].finishingTime).not.toBe(0);
       }
@@ -414,9 +414,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].stack.items).toEqual([3, 4, 5]);
       for (let i = 0; i < result.steps[3].vertices.length; ++i) {
         if ([0, 1, 2].includes(i)) {
-          expect(result.steps[3].vertices[i].color).toBe(Color.GRAY);
+          expect(result.steps[3].vertices[i].color).toBe(Color.LIGHT_BLUE);
         } else if ([3, 4, 5].includes(i)) {
-          expect(result.steps[3].vertices[i].color).toBe(Color.BLACK);
+          expect(result.steps[3].vertices[i].color).toBe(Color.MENTA);
         } else {
           expect(result.steps[3].vertices[i].color).toBe(Color.WHITE);
         }
@@ -428,7 +428,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].vertices.length).toBe(6);
       expect(result.steps[6].stack.items).toEqual([3, 4, 5, 2, 1, 0]);
       for (let i = 0; i < result.steps[6].vertices.length; ++i) {
-        expect(result.steps[6].vertices[i].color).toBe(Color.BLACK);
+        expect(result.steps[6].vertices[i].color).toBe(Color.MENTA);
       }
       expect(result.steps[6].topologicalOrder).toEqual([0, 1, 2, 5, 4, 3]);
     });
@@ -801,11 +801,11 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: fourth step", () => {
       expect(result.steps[3].vertices.length).toBe(6);
-      expect(result.steps[3].vertices[0].color).toBe(Color.GRAY);
-      expect(result.steps[3].vertices[1].color).toBe(Color.GRAY);
+      expect(result.steps[3].vertices[0].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[3].vertices[1].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[3].vertices[2].color).toBe(Color.WHITE);
       expect(result.steps[3].vertices[3].color).toBe(Color.WHITE);
-      expect(result.steps[3].vertices[4].color).toBe(Color.GRAY);
+      expect(result.steps[3].vertices[4].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[3].vertices[5].color).toBe(Color.WHITE);
       expect(result.steps[3].step).toBe(3);
       expect(result.steps[3].prQueue.items).toEqual([3, 5, 2]);
@@ -821,12 +821,12 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: last step", () => {
       expect(result.steps[6].vertices.length).toBe(6);
-      expect(result.steps[6].vertices[0].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[1].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[2].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[3].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[4].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[5].color).toBe(Color.GRAY);
+      expect(result.steps[6].vertices[0].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[1].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[2].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[3].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[4].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[5].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[6].step).toBe(6);
       expect(result.steps[6].prQueue.items).toEqual([]);
       expect(result.steps[6].currentVertex).toBe(2);
@@ -876,7 +876,7 @@ describe("Test Class: Algorithm", () => {
     test("Result: first step", () => {
       expect(result.steps[0].step).toBe(0);
       expect(result.steps[0].vertices.length).toBe(4);
-      expect(result.steps[0].vertices[0].color).toBe(Color.GRAY);
+      expect(result.steps[0].vertices[0].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[0].vertices[1].color).toBe(Color.WHITE);
       expect(result.steps[0].vertices[2].color).toBe(Color.WHITE);
       expect(result.steps[0].vertices[3].color).toBe(Color.WHITE);
@@ -888,10 +888,10 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: fourth step", () => {
       expect(result.steps[4].vertices.length).toBe(4);
-      expect(result.steps[4].vertices[0].color).toBe(Color.GRAY);
-      expect(result.steps[4].vertices[1].color).toBe(Color.GRAY);
-      expect(result.steps[4].vertices[2].color).toBe(Color.GRAY);
-      expect(result.steps[4].vertices[3].color).toBe(Color.GRAY);
+      expect(result.steps[4].vertices[0].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[4].vertices[1].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[4].vertices[2].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[4].vertices[3].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[4].step).toBe(4);
       expect(result.steps[4].round).toBe(2);
       expect(result.steps[4].chosenEdges).toEqual([
@@ -904,10 +904,10 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: last step", () => {
       expect(result.steps[6].vertices.length).toBe(4);
-      expect(result.steps[6].vertices[0].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[1].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[2].color).toBe(Color.GRAY);
-      expect(result.steps[6].vertices[3].color).toBe(Color.GRAY);
+      expect(result.steps[6].vertices[0].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[1].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[2].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[6].vertices[3].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[6].step).toBe(6);
       expect(result.steps[6].round).toBe(3);
       expect(result.steps[6].chosenEdges).toEqual([
@@ -1010,10 +1010,10 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: fourth step", () => {
       expect(result.steps[3].vertices.length).toBe(5);
-      expect(result.steps[3].vertices[0].color).toBe(Color.BLACK);
-      expect(result.steps[3].vertices[1].color).toBe(Color.BLACK);
-      expect(result.steps[3].vertices[2].color).toBe(Color.GRAY);
-      expect(result.steps[3].vertices[3].color).toBe(Color.BLACK);
+      expect(result.steps[3].vertices[0].color).toBe(Color.MENTA);
+      expect(result.steps[3].vertices[1].color).toBe(Color.MENTA);
+      expect(result.steps[3].vertices[2].color).toBe(Color.LIGHT_BLUE);
+      expect(result.steps[3].vertices[3].color).toBe(Color.MENTA);
       expect(result.steps[3].vertices[4].color).toBe(Color.WHITE);
       expect(result.steps[3].currentVertex).toBe(1);
       expect(result.steps[3].step).toBe(2);
@@ -1027,11 +1027,11 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: last step", () => {
       expect(result.steps[5].vertices.length).toBe(5);
-      expect(result.steps[5].vertices[0].color).toBe(Color.BLACK);
-      expect(result.steps[5].vertices[1].color).toBe(Color.BLACK);
-      expect(result.steps[5].vertices[2].color).toBe(Color.BLACK);
-      expect(result.steps[5].vertices[3].color).toBe(Color.BLACK);
-      expect(result.steps[5].vertices[4].color).toBe(Color.BLACK);
+      expect(result.steps[5].vertices[0].color).toBe(Color.MENTA);
+      expect(result.steps[5].vertices[1].color).toBe(Color.MENTA);
+      expect(result.steps[5].vertices[2].color).toBe(Color.MENTA);
+      expect(result.steps[5].vertices[3].color).toBe(Color.MENTA);
+      expect(result.steps[5].vertices[4].color).toBe(Color.MENTA);
       expect(result.steps[5].step).toBe(4);
       expect(result.steps[5].currentVertex).toBe(4);
       expect(result.steps[5].queue.items).toEqual([]);
@@ -1044,11 +1044,11 @@ describe("Test Class: Algorithm", () => {
 
     test("Result: end step", () => {
       expect(result.steps[6].vertices.length).toBe(5);
-      expect(result.steps[6].vertices[0].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[1].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[2].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[3].color).toBe(Color.BLACK);
-      expect(result.steps[6].vertices[4].color).toBe(Color.BLACK);
+      expect(result.steps[6].vertices[0].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[1].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[2].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[3].color).toBe(Color.MENTA);
+      expect(result.steps[6].vertices[4].color).toBe(Color.MENTA);
       expect(result.steps[6].step).toBe(-2);
       expect(result.steps[6].currentVertex).toBe(null);
       expect(result.steps[6].queue.items).toEqual([]);
@@ -1104,7 +1104,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[0].j).toBe(null);
       for (let i = 0; i < result.steps[0].vertices.length; ++i) {
         if (result.steps[0].k === i)
-          expect(result.steps[0].vertices[i].color).toBe(Color.GRAY);
+          expect(result.steps[0].vertices[i].color).toBe(Color.LIGHT_BLUE);
         else if (result.steps[0].i === i)
           expect(result.steps[0].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[0].j === i)
@@ -1132,7 +1132,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].j).toBe(1);
       for (let i = 0; i < result.steps[3].vertices.length; ++i) {
         if (result.steps[3].k === i)
-          expect(result.steps[3].vertices[i].color).toBe(Color.GRAY);
+          expect(result.steps[3].vertices[i].color).toBe(Color.LIGHT_BLUE);
         else if (result.steps[3].i === i)
           expect(result.steps[3].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[3].j === i)
@@ -1160,7 +1160,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].j).toBe(2);
       for (let i = 0; i < result.steps[6].vertices.length; ++i) {
         if (result.steps[6].k === i)
-          expect(result.steps[6].vertices[i].color).toBe(Color.GRAY);
+          expect(result.steps[6].vertices[i].color).toBe(Color.LIGHT_BLUE);
         else if (result.steps[6].i === i)
           expect(result.steps[6].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[6].j === i)

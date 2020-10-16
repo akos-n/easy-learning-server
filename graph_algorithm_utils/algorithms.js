@@ -117,7 +117,7 @@ function dfsVisit(
   time.push(0);
   verticesInBranch.push(indexOfCurrentVertex);
   vertices[indexOfCurrentVertex].discoveryTime = time.length;
-  vertices[indexOfCurrentVertex].color = Color.GRAY;
+  vertices[indexOfCurrentVertex].color = Color.LIGHT_BLUE;
   algorithmSteps.addStep(
     new Step({ vertices: vertices, chosenEdges: chosenEdges })
   );
@@ -142,14 +142,14 @@ function dfsVisit(
       );
     } else if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
-      Color.GRAY
+      Color.LIGHT_BLUE
     ) {
       // backward edge
       chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
       chosenEdges[chosenEdges.length - 1].color = Color.BLUE;
     } else if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
-      Color.BLACK
+      Color.MENTA
     ) {
       chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
       // forward edge
@@ -165,7 +165,7 @@ function dfsVisit(
       }
     }
   }
-  vertices[indexOfCurrentVertex].color = Color.BLACK;
+  vertices[indexOfCurrentVertex].color = Color.MENTA;
   time.push(0);
   vertices[indexOfCurrentVertex].finishingTime = time.length;
   algorithmSteps.addStep(
@@ -181,7 +181,7 @@ function topoWithDFSVisit(
   topologicalOrder,
   algorithmSteps
 ) {
-  vertices[indexOfVertex].color = Color.GRAY;
+  vertices[indexOfVertex].color = Color.LIGHT_BLUE;
   for (let edge of graph.adjList.get(indexOfVertex)) {
     if (vertices[edge.toVertex].color === Color.WHITE) {
       vertices[edge.toVertex].parent = indexOfVertex;
@@ -193,15 +193,15 @@ function topoWithDFSVisit(
         topologicalOrder,
         algorithmSteps
       );
-    } else if (vertices[edge.toVertex].color === Color.GRAY) {
+    } else if (vertices[edge.toVertex].color === Color.LIGHT_BLUE) {
       // backwardEdge(currentVertex, vertices[i]);
-    } else if (vertices[edge.toVertex].color === Color.BLACK) {
+    } else if (vertices[edge.toVertex].color === Color.MENTA) {
       // crossEdge(currentVertex, vertices[i]);
       // or
       // forwardEdge(currentVertex, vertices[i]);
     }
   }
-  vertices[indexOfVertex].color = Color.BLACK;
+  vertices[indexOfVertex].color = Color.MENTA;
   stack.push(indexOfVertex);
   topologicalOrder = copy(stack.items).reverse();
   algorithmSteps.addStep(
@@ -224,7 +224,7 @@ class Algorithm {
     for (let i = 0; i < graph.noOfVertices; i++) vertices[i] = new Vertex();
 
     vertices[startingNode].depth = 0;
-    vertices[startingNode].color = Color.GRAY;
+    vertices[startingNode].color = Color.LIGHT_BLUE;
 
     let queue = new Queue();
     queue.add(startingNode);
@@ -253,11 +253,11 @@ class Algorithm {
             graph.adjList.get(currentVertex)[i].toVertex
           ].parent = currentVertex;
           vertices[graph.adjList.get(currentVertex)[i].toVertex].color =
-            Color.GRAY;
+            Color.LIGHT_BLUE;
           queue.add(graph.adjList.get(currentVertex)[i].toVertex);
         }
       }
-      vertices[currentVertex].color = Color.BLACK;
+      vertices[currentVertex].color = Color.MENTA;
       algorithmSteps.addStep(
         new Step({
           vertices: vertices,
@@ -358,7 +358,7 @@ class Algorithm {
       let currentVertex = stack.pop();
       i++;
       topologicalOrder.push(currentVertex);
-      vertices[currentVertex].color = Color.GRAY;
+      vertices[currentVertex].color = Color.LIGHT_BLUE;
       for (let i = 0; i < graph.adjList.get(currentVertex).length; ++i) {
         inDegrees[graph.adjList.get(currentVertex)[i].toVertex]--;
         if (inDegrees[graph.adjList.get(currentVertex)[i].toVertex] === 0)
@@ -548,7 +548,7 @@ class Algorithm {
     };
     while (!prQueue.isEmpty()) {
       let currentVertex = prQueue.remMax();
-      primVertices[currentVertex].color = Color.GRAY;
+      primVertices[currentVertex].color = Color.LIGHT_BLUE;
       stepCounter++;
       for (let i = 0; i < graph.adjList.get(currentVertex).length; ++i) {
         if (
@@ -600,7 +600,7 @@ class Algorithm {
     queue.add(startingVertex);
     let stepCounter = 0;
     let chosenEdges = [];
-    bfVertices[startingVertex].color = Color.GRAY;
+    bfVertices[startingVertex].color = Color.LIGHT_BLUE;
 
     algorithmSteps.addStep(
       new Step({
@@ -647,7 +647,7 @@ class Algorithm {
             bfVertices[currentVertex].distance + edge.weight;
           bfVertices[edge.toVertex].parent = currentVertex;
           if (!queue.isInQueue(edge.toVertex)) {
-            bfVertices[edge.toVertex].color = Color.GRAY;
+            bfVertices[edge.toVertex].color = Color.LIGHT_BLUE;
             chosenEdges = addNewEdgeToChosenEdges(chosenEdges, edge);
             queue.add(edge.toVertex);
             roundChecker[roundCounter + 1].push(edge.toVertex);
@@ -732,7 +732,7 @@ class Algorithm {
     let i = 0;
     while (!queue.isEmpty()) {
       currentVertex = queue.remMax();
-      dijkstraVertices[currentVertex].color = Color.BLACK;
+      dijkstraVertices[currentVertex].color = Color.MENTA;
       for (let edge of graph.adjList.get(currentVertex)) {
         if (
           dijkstraVertices[edge.toVertex].distance >
@@ -741,7 +741,7 @@ class Algorithm {
           dijkstraVertices[edge.toVertex].distance =
             dijkstraVertices[currentVertex].distance + edge.weight;
           dijkstraVertices[edge.toVertex].parent = currentVertex;
-          dijkstraVertices[edge.toVertex].color = Color.GRAY;
+          dijkstraVertices[edge.toVertex].color = Color.LIGHT_BLUE;
           chosenEdges = addNewEdgeToChosenEdges(chosenEdges, edge);
           queue.setSortByList(dijkstraVertices);
         }
@@ -809,7 +809,7 @@ class Algorithm {
     }
     let setColorOfVertices = (k, i, j) => {
       for (let index = 0; index < vertices.length; ++index) {
-        if (index === k) vertices[index].color = Color.GRAY;
+        if (index === k) vertices[index].color = Color.LIGHT_BLUE;
         else if (index === i) vertices[index].color = Color.PALE_RED;
         else if (index === j) vertices[index].color = Color.GREEN;
         else vertices[index].color = Color.WHITE;
