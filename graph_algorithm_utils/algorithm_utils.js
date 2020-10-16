@@ -177,7 +177,7 @@ class PriorityQueue {
 
 const Color = {
   WHITE: "rgb(248,248,255)",
-  YELLOW: "rgb(225,225,0)",
+  YELLOW: "rgb(170,170,0)",
   GRAY: "rgb(105,105,105)",
   RED: "rgb(255,0,0)",
   ORANGE: "rgb(255,128,0)",
