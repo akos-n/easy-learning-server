@@ -671,19 +671,19 @@ describe("Test Class: Algorithm", () => {
       }
       expect(result.steps[3].chosenEdges).toEqual([
         {
-          color: "rgb(0,0,0)",
+          color: "rgb(139, 0, 0)",
           fromVertex: 3,
           toVertex: 4,
           weight: 1,
         },
         {
-          color: "rgb(0,0,0)",
+          color: "rgb(139, 0, 0)",
           fromVertex: 0,
           toVertex: 1,
           weight: 2,
         },
         {
-          color: "rgb(0,0,0)",
+          color: "rgb(139, 0, 0)",
           fromVertex: 5,
           toVertex: 4,
           weight: 2,
@@ -712,11 +712,11 @@ describe("Test Class: Algorithm", () => {
         }
       }
       expect(result.steps[6].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 3, toVertex: 4, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 5, toVertex: 4, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 4, weight: 3 },
-        { color: "rgb(0,0,0)", fromVertex: 2, toVertex: 5, weight: 5 },
+        { color: "rgb(139, 0, 0)", fromVertex: 3, toVertex: 4, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 5, toVertex: 4, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 4, weight: 3 },
+        { color: "rgb(139, 0, 0)", fromVertex: 2, toVertex: 5, weight: 5 },
       ]);
       expect(result.steps[6].kruskalSets).toEqual([[2, 0, 1, 5, 3, 4]]);
     });
@@ -811,11 +811,11 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].prQueue.items).toEqual([3, 5, 2]);
       expect(result.steps[3].currentVertex).toBe(4);
       expect(result.steps[3].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 6 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 4, weight: 3 },
-        { color: "rgb(0,0,0)", fromVertex: 4, toVertex: 3, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 4, toVertex: 5, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 2, weight: 6 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 4, weight: 3 },
+        { color: "rgb(139, 0, 0)", fromVertex: 4, toVertex: 3, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 4, toVertex: 5, weight: 2 },
       ]);
     });
 
@@ -831,11 +831,11 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].prQueue.items).toEqual([]);
       expect(result.steps[6].currentVertex).toBe(2);
       expect(result.steps[6].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 4, weight: 3 },
-        { color: "rgb(0,0,0)", fromVertex: 4, toVertex: 3, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 4, toVertex: 5, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 5, toVertex: 2, weight: 5 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 4, weight: 3 },
+        { color: "rgb(139, 0, 0)", fromVertex: 4, toVertex: 3, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 4, toVertex: 5, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 5, toVertex: 2, weight: 5 },
       ]);
     });
   });
@@ -895,9 +895,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[4].step).toBe(4);
       expect(result.steps[4].round).toBe(2);
       expect(result.steps[4].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 2, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 3, weight: -2 },
-        { color: "rgb(0,0,0)", fromVertex: 2, toVertex: 1, weight: -1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 2, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 3, weight: -2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 2, toVertex: 1, weight: -1 },
       ]);
       expect(result.steps[4].queue.items).toEqual([1]);
     });
@@ -911,9 +911,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].step).toBe(6);
       expect(result.steps[6].round).toBe(3);
       expect(result.steps[6].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 2, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 2, toVertex: 1, weight: -1 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 3, weight: -2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 2, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 2, toVertex: 1, weight: -1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 3, weight: -2 },
       ]);
       expect(result.steps[6].queue.items).toEqual([]);
     });
@@ -1019,9 +1019,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].step).toBe(2);
       expect(result.steps[3].queue.items).toEqual([2, 4]);
       expect(result.steps[3].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 0 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 3, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 2, weight: 0 },
       ]);
     });
 
@@ -1036,9 +1036,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[5].currentVertex).toBe(4);
       expect(result.steps[5].queue.items).toEqual([]);
       expect(result.steps[5].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 0 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 3, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 2, weight: 0 },
       ]);
     });
 
@@ -1053,9 +1053,9 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].currentVertex).toBe(null);
       expect(result.steps[6].queue.items).toEqual([]);
       expect(result.steps[6].chosenEdges).toEqual([
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 3, weight: 1 },
-        { color: "rgb(0,0,0)", fromVertex: 0, toVertex: 1, weight: 2 },
-        { color: "rgb(0,0,0)", fromVertex: 1, toVertex: 2, weight: 0 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 3, weight: 1 },
+        { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
+        { color: "rgb(139, 0, 0)", fromVertex: 1, toVertex: 2, weight: 0 },
       ]);
     });
   });
