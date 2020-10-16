@@ -182,6 +182,7 @@ const Color = {
   ORANGE: "rgb(255,128,0)",
   BLUE: "rgb(0,0,128)",
   PALE_RED: "rgb(205,65,65)",
+  DARK_RED: "rgb(139, 0, 0)",
   GREEN: "rgb(0, 128, 0)",
   BLACK: "rgb(0,0,0)",
 };

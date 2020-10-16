@@ -127,7 +127,7 @@ function dfsVisit(
       Color.WHITE
     ) {
       chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
-      chosenEdges[chosenEdges.length - 1].color = Color.PALE_RED;
+      chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
       vertices[
         graph.adjList.get(indexOfCurrentVertex)[i].toVertex
       ].parent = indexOfCurrentVertex;
@@ -155,7 +155,7 @@ function dfsVisit(
       // cross edge
       if (
         verticesInBranch.includes(
-          vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex]
+          graph.adjList.get(indexOfCurrentVertex)[i].toVertex
         )
       ) {
         chosenEdges[chosenEdges.length - 1].color = Color.ORANGE;
