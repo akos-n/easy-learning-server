@@ -118,7 +118,9 @@ function dfsVisit(
   verticesInBranch.push(indexOfCurrentVertex);
   vertices[indexOfCurrentVertex].discoveryTime = time.length;
   vertices[indexOfCurrentVertex].color = Color.GRAY;
-  algorithmSteps.addStep(new Step({ vertices: vertices }));
+  algorithmSteps.addStep(
+    new Step({ vertices: vertices, chosenEdges: chosenEdges })
+  );
   for (let i = 0; i < graph.adjList.get(indexOfCurrentVertex).length; ++i) {
     if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
@@ -166,7 +168,9 @@ function dfsVisit(
   vertices[indexOfCurrentVertex].color = Color.BLACK;
   time.push(0);
   vertices[indexOfCurrentVertex].finishingTime = time.length;
-  algorithmSteps.addStep(new Step({ vertices: vertices }));
+  algorithmSteps.addStep(
+    new Step({ vertices: vertices, chosenEdges: chosenEdges })
+  );
 }
 
 function topoWithDFSVisit(
