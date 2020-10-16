@@ -158,7 +158,7 @@ function dfsVisit(
           graph.adjList.get(indexOfCurrentVertex)[i].toVertex
         )
       ) {
-        chosenEdges[chosenEdges.length - 1].color = Color.GREEN;
+        chosenEdges[chosenEdges.length - 1].color = Color.YELLOW;
       } else {
         // cross edge
         chosenEdges[chosenEdges.length - 1].color = Color.ORANGE;
