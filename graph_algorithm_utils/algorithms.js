@@ -467,6 +467,7 @@ class Algorithm {
           setColorOfVertices(listIndexOfFromVertex, listIndexOfToVertex);
         else setColorOfVertices(listIndexOfToVertex, listIndexOfFromVertex);
         chosenEdges.push(edge);
+        chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
         kruskalSets[listIndexOfFromVertex] = kruskalSets[
           listIndexOfFromVertex
         ].concat(kruskalSets[listIndexOfToVertex]);
@@ -533,6 +534,7 @@ class Algorithm {
         } else ++i;
       }
       chosenEdges.push(edge);
+      chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
       return chosenEdges;
     };
     while (!prQueue.isEmpty()) {
@@ -613,6 +615,7 @@ class Algorithm {
         } else ++i;
       }
       chosenEdges.push(edge);
+      chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
       return chosenEdges;
     };
     while (!queue.isEmpty()) {
@@ -714,6 +717,7 @@ class Algorithm {
         } else ++i;
       }
       chosenEdges.push(edge);
+      chosenEdges[chosenEdges.length - 1].color = Color.DARK_RED;
       return chosenEdges;
     };
     let i = 0;
