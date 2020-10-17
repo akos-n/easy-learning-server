@@ -794,7 +794,6 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[0].vertices[3].color).toBe(Color.WHITE);
       expect(result.steps[0].vertices[4].color).toBe(Color.WHITE);
       expect(result.steps[0].vertices[5].color).toBe(Color.WHITE);
-      expect(result.steps[0].prQueue.items).toEqual([0, 1, 2, 3, 4, 5]);
       expect(result.steps[0].currentVertex).toBe(-1);
       expect(result.steps[0].chosenEdges).toEqual([]);
     });
@@ -808,7 +807,6 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].vertices[4].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[3].vertices[5].color).toBe(Color.WHITE);
       expect(result.steps[3].step).toBe(3);
-      expect(result.steps[3].prQueue.items).toEqual([3, 5, 2]);
       expect(result.steps[3].currentVertex).toBe(4);
       expect(result.steps[3].chosenEdges).toEqual([
         { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },
@@ -828,7 +826,6 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].vertices[4].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[6].vertices[5].color).toBe(Color.LIGHT_BLUE);
       expect(result.steps[6].step).toBe(6);
-      expect(result.steps[6].prQueue.items).toEqual([]);
       expect(result.steps[6].currentVertex).toBe(2);
       expect(result.steps[6].chosenEdges).toEqual([
         { color: "rgb(139, 0, 0)", fromVertex: 0, toVertex: 1, weight: 2 },

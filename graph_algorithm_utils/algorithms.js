@@ -60,8 +60,6 @@ class AlgorithmSteps {
 class Step {
   constructor({
     vertices = null,
-    touchedVertices = null,
-    notTouchedVertices = null,
     stack = null,
     queue = null,
     topologicalOrder = null,
@@ -70,7 +68,6 @@ class Step {
     chosenEdges = null,
     kruskalSets = null,
     step = null,
-    prQueue = null,
     round = null,
     currentVertex = null,
     distanceMatrix = null,
@@ -80,8 +77,6 @@ class Step {
     j = null,
   }) {
     this.vertices = copy(vertices);
-    this.touchedVertices = touchedVertices;
-    this.notTouchedVertices = notTouchedVertices;
     this.stack = copy(stack);
     this.queue = copy(queue);
     this.topologicalOrder = copy(topologicalOrder);
@@ -90,7 +85,6 @@ class Step {
     this.chosenEdges = copy(chosenEdges);
     this.kruskalSets = copy(kruskalSets);
     this.step = copy(step);
-    this.prQueue = copy(prQueue);
     this.round = copy(round);
     this.currentVertex = copy(currentVertex);
     this.distanceMatrix = copy(distanceMatrix);
@@ -530,7 +524,6 @@ class Algorithm {
       new Step({
         step: stepCounter,
         vertices: primVertices,
-        prQueue: prQueue,
         currentVertex: -1,
         chosenEdges: chosenEdges,
       })
@@ -573,7 +566,6 @@ class Algorithm {
         new Step({
           step: stepCounter,
           vertices: primVertices,
-          prQueue: prQueue,
           currentVertex: currentVertex,
           chosenEdges: chosenEdges,
         })

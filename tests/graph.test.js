@@ -14,7 +14,9 @@ describe("Test Class: Vertex", () => {
   });
 
   test("Test Function: constructor (with values)", () => {
-    const vertex = new Vertex(5, Color.GRAY, 10, 15, 20, 4, 9);
+    const vertex = new Vertex(1, null, 5, Color.GRAY, 10, 15, 20, 4, 9);
+    expect(vertex.vertexNumber).toBe(1);
+    expect(vertex.position).toBeNull();
     expect(vertex.parent).toBe(5);
     expect(vertex.color).toBe(Color.GRAY);
     expect(vertex.depth).toBe(10);
