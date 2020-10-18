@@ -552,6 +552,8 @@ class Algorithm {
             chosenEdges,
             graph.adjList.get(currentVertex)[i]
           );
+          primVertices[graph.adjList.get(currentVertex)[i].toVertex].color =
+            Color.LIGHT_BLUE;
           prQueue.setSortByList(primVertices);
         }
       }
