@@ -178,7 +178,6 @@ function topoWithDFSVisit(
   vertices[indexOfVertex].color = Color.LIGHT_BLUE;
   for (let edge of graph.adjList.get(indexOfVertex)) {
     if (vertices[edge.toVertex].color === Color.WHITE) {
-      vertices[edge.toVertex].parent = indexOfVertex;
       topoWithDFSVisit(
         graph,
         edge.toVertex,
@@ -187,12 +186,6 @@ function topoWithDFSVisit(
         topologicalOrder,
         algorithmSteps
       );
-    } else if (vertices[edge.toVertex].color === Color.LIGHT_BLUE) {
-      // backwardEdge(currentVertex, vertices[i]);
-    } else if (vertices[edge.toVertex].color === Color.MENTA) {
-      // crossEdge(currentVertex, vertices[i]);
-      // or
-      // forwardEdge(currentVertex, vertices[i]);
     }
   }
   vertices[indexOfVertex].color = Color.MENTA;
@@ -352,7 +345,7 @@ class Algorithm {
       let currentVertex = stack.pop();
       i++;
       topologicalOrder.push(currentVertex);
-      vertices[currentVertex].color = Color.LIGHT_BLUE;
+      vertices[currentVertex].color = Color.MENTA;
       for (let i = 0; i < graph.adjList.get(currentVertex).length; ++i) {
         inDegrees[graph.adjList.get(currentVertex)[i].toVertex]--;
         if (inDegrees[graph.adjList.get(currentVertex)[i].toVertex] === 0)
@@ -541,7 +534,7 @@ class Algorithm {
     };
     while (!prQueue.isEmpty()) {
       let currentVertex = prQueue.remMax();
-      primVertices[currentVertex].color = Color.LIGHT_BLUE;
+      primVertices[currentVertex].color = Color.MENTA;
       stepCounter++;
       for (let i = 0; i < graph.adjList.get(currentVertex).length; ++i) {
         if (
@@ -629,6 +622,7 @@ class Algorithm {
         roundChecker[roundCounter].indexOf(currentVertex),
         1
       );
+      bfVertices[currentVertex].color = Color.MENTA;
       stepCounter++;
       for (let edge of graph.adjList.get(currentVertex)) {
         if (
@@ -801,7 +795,7 @@ class Algorithm {
     }
     let setColorOfVertices = (k, i, j) => {
       for (let index = 0; index < vertices.length; ++index) {
-        if (index === k) vertices[index].color = Color.LIGHT_BLUE;
+        if (index === k) vertices[index].color = Color.MENTA;
         else if (index === i) vertices[index].color = Color.PALE_RED;
         else if (index === j) vertices[index].color = Color.GREEN;
         else vertices[index].color = Color.WHITE;
