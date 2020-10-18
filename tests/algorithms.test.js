@@ -1101,7 +1101,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[0].j).toBe(null);
       for (let i = 0; i < result.steps[0].vertices.length; ++i) {
         if (result.steps[0].k === i)
-          expect(result.steps[0].vertices[i].color).toBe(Color.MENTA);
+          expect(result.steps[0].vertices[i].color).toBe(Color.BLUE);
         else if (result.steps[0].i === i)
           expect(result.steps[0].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[0].j === i)
@@ -1129,7 +1129,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[3].j).toBe(1);
       for (let i = 0; i < result.steps[3].vertices.length; ++i) {
         if (result.steps[3].k === i)
-          expect(result.steps[3].vertices[i].color).toBe(Color.MENTA);
+          expect(result.steps[3].vertices[i].color).toBe(Color.BLUE);
         else if (result.steps[3].i === i)
           expect(result.steps[3].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[3].j === i)
@@ -1157,7 +1157,7 @@ describe("Test Class: Algorithm", () => {
       expect(result.steps[6].j).toBe(2);
       for (let i = 0; i < result.steps[6].vertices.length; ++i) {
         if (result.steps[6].k === i)
-          expect(result.steps[6].vertices[i].color).toBe(Color.MENTA);
+          expect(result.steps[6].vertices[i].color).toBe(Color.BLUE);
         else if (result.steps[6].i === i)
           expect(result.steps[6].vertices[i].color).toBe(Color.PALE_RED);
         else if (result.steps[6].j === i)
