@@ -795,7 +795,7 @@ class Algorithm {
     }
     let setColorOfVertices = (k, i, j) => {
       for (let index = 0; index < vertices.length; ++index) {
-        if (index === k) vertices[index].color = Color.MENTA;
+        if (index === k) vertices[index].color = Color.BLUE;
         else if (index === i) vertices[index].color = Color.PALE_RED;
         else if (index === j) vertices[index].color = Color.GREEN;
         else vertices[index].color = Color.WHITE;
