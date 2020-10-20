@@ -169,14 +169,14 @@ function dfsVisit(
 
 function topoWithDFSVisit(
   graph,
-  indexOfVertex,
+  indexOfCurrentVertex,
   vertices,
   stack,
   topologicalOrder,
   algorithmSteps
 ) {
-  vertices[indexOfVertex].color = Color.LIGHT_BLUE;
-  for (let edge of graph.adjList.get(indexOfVertex)) {
+  vertices[indexOfCurrentVertex].color = Color.LIGHT_BLUE;
+  for (let edge of graph.adjList.get(indexOfCurrentVertex)) {
     if (vertices[edge.toVertex].color === Color.WHITE) {
       topoWithDFSVisit(
         graph,
@@ -186,12 +186,13 @@ function topoWithDFSVisit(
         topologicalOrder,
         algorithmSteps
       );
-    } else {
+    } else if (vertices[edge.toVertex].color === Color.LIGHT_BLUE) {
+      // backward edge so circle in the graph
       throw new Error("There is a circle in the graph!");
     }
   }
-  vertices[indexOfVertex].color = Color.MENTA;
-  stack.push(indexOfVertex);
+  vertices[indexOfCurrentVertex].color = Color.MENTA;
+  stack.push(indexOfCurrentVertex);
   topologicalOrder = copy(stack.items).reverse();
   algorithmSteps.addStep(
     new Step({
