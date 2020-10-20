@@ -186,6 +186,8 @@ function topoWithDFSVisit(
         topologicalOrder,
         algorithmSteps
       );
+    } else {
+      throw new Error("There is a circle in the graph!");
     }
   }
   vertices[indexOfVertex].color = Color.MENTA;
