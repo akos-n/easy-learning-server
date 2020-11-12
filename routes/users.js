@@ -9,7 +9,7 @@ const UserSchemaValidator = require("../schemas/UserSchemaValidator");
 const ResetPasswordSchema = require("../schemas/ResetPasswordSchema");
 
 const db = mongoose.model("users", UserSchemaValidator);
-const resetDb = mongoose.model("reset-password", ResetPasswordSchema);
+const resetDb = mongoose.model("reset-passwords", ResetPasswordSchema);
 
 router.post("/register", (req, res, next) => {
   bcrypt
