@@ -105,11 +105,9 @@ function dfsVisit(
   vertices,
   time,
   algorithmSteps,
-  chosenEdges,
-  verticesInBranch
+  chosenEdges
 ) {
   time.push(0);
-  verticesInBranch.push(indexOfCurrentVertex);
   vertices[indexOfCurrentVertex].discoveryTime = time.length;
   vertices[indexOfCurrentVertex].color = Color.LIGHT_BLUE;
   algorithmSteps.addStep(
@@ -131,8 +129,7 @@ function dfsVisit(
         vertices,
         time,
         algorithmSteps,
-        chosenEdges,
-        verticesInBranch
+        chosenEdges
       );
     } else if (
       vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex].color ===
@@ -148,9 +145,8 @@ function dfsVisit(
       chosenEdges.push(copy(graph.adjList.get(indexOfCurrentVertex)[i]));
       // forward edge
       if (
-        verticesInBranch.includes(
-          graph.adjList.get(indexOfCurrentVertex)[i].toVertex
-        )
+        vertices[graph.adjList.get(indexOfCurrentVertex)[i].toVertex]
+          .discoveryTime > vertices[indexOfCurrentVertex].discoveryTime
       ) {
         chosenEdges[chosenEdges.length - 1].color = Color.YELLOW;
       } else {
@@ -279,16 +275,7 @@ class Algorithm {
 
     for (let i = 0; i < vertices.length; ++i) {
       if (vertices[i].color === Color.WHITE) {
-        let verticesInBranch = [];
-        dfsVisit(
-          graph,
-          i,
-          vertices,
-          time,
-          algorithmSteps,
-          chosenEdges,
-          verticesInBranch
-        );
+        dfsVisit(graph, i, vertices, time, algorithmSteps, chosenEdges);
       }
     }
     algorithmSteps.addStep(
