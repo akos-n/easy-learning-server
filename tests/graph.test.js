@@ -2,7 +2,7 @@ const { Color } = require("../graph_algorithm_utils/algorithm_utils");
 const { Vertex } = require("../graph_algorithm_utils/graph");
 
 describe("Test Class: Vertex", () => {
-  test("Test Function: constructor (default)", () => {
+  test("Test Method: constructor (default)", () => {
     const vertex = new Vertex();
     expect(vertex.parent).toBe(null);
     expect(vertex.color).toBe(Color.WHITE);
@@ -13,7 +13,7 @@ describe("Test Class: Vertex", () => {
     expect(vertex.finishingTime).toBe(0);
   });
 
-  test("Test Function: constructor (with values)", () => {
+  test("Test Method: constructor (with values)", () => {
     const vertex = new Vertex(1, null, 5, Color.GRAY, 10, 15, 20, 4, 9);
     expect(vertex.vertexNumber).toBe(1);
     expect(vertex.position).toBeNull();

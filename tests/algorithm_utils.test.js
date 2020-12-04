@@ -3,7 +3,7 @@ let utils = require("../graph_algorithm_utils/algorithm_utils");
 describe("Test Class: Stack", () => {
   let stack = new utils.Stack();
 
-  test("Test Function: constructor", () => {
+  test("Test Method: constructor", () => {
     expect(stack).toBeDefined();
     expect(stack).not.toBeNull();
     expect(stack.isEmpty()).toBeTruthy();
@@ -11,7 +11,7 @@ describe("Test Class: Stack", () => {
     expect(stack.printStack()).toBe("");
   });
 
-  test("Test Function: pop (empty stack)", () => {
+  test("Test Method: pop (empty stack)", () => {
     expect(stack.length()).toBe(0);
     expect(() => {
       stack.pop();
@@ -19,7 +19,7 @@ describe("Test Class: Stack", () => {
     expect(stack.length()).toBe(0);
   });
 
-  test("Test Function: push", () => {
+  test("Test Method: push", () => {
     stack.push(1);
     stack.push(2);
     stack.push(3);
@@ -29,19 +29,19 @@ describe("Test Class: Stack", () => {
     expect(stack.length()).toBe(5);
   });
 
-  test("Test Function: pop", () => {
+  test("Test Method: pop", () => {
     expect(stack.length()).toBe(5);
     expect(stack.pop()).toBe(5);
     expect(stack.length()).toBe(4);
   });
 
-  test("Test Function: top", () => {
+  test("Test Method: top", () => {
     expect(stack.length()).toBe(4);
     expect(stack.top()).toBe(4);
     expect(stack.length()).toBe(4);
   });
 
-  test("Test Function: isInStack", () => {
+  test("Test Method: isInStack", () => {
     expect(stack.isInStack(5)).toBeFalsy();
     expect(stack.isInStack(-4)).toBeFalsy();
     expect(stack.isInStack(0)).toBeFalsy();
@@ -51,11 +51,11 @@ describe("Test Class: Stack", () => {
     expect(stack.isInStack(1)).toBeTruthy();
   });
 
-  test("Test Function: printStack", () => {
+  test("Test Method: printStack", () => {
     expect(stack.printStack()).toBe("1 2 3 4 ");
   });
 
-  test("Test Function: setEmpty", () => {
+  test("Test Method: setEmpty", () => {
     expect(stack.isEmpty()).toBeFalsy();
     expect(stack.length()).toBe(4);
     stack.setEmpty();
@@ -67,14 +67,14 @@ describe("Test Class: Stack", () => {
 describe("Test Class: Queue", () => {
   let queue = new utils.Queue();
 
-  test("Test Function: constructor", () => {
+  test("Test Method: constructor", () => {
     expect(queue).toBeDefined();
     expect(queue).not.toBeNull();
     expect(queue.isEmpty()).toBeTruthy();
     expect(queue.length()).toBe(0);
   });
 
-  test("Test Function: rem (empty queue)", () => {
+  test("Test Method: rem (empty queue)", () => {
     expect(queue.length()).toBe(0);
     expect(() => {
       queue.rem();
@@ -82,7 +82,7 @@ describe("Test Class: Queue", () => {
     expect(queue.length()).toBe(0);
   });
 
-  test("Test Function: first (empty queue)", () => {
+  test("Test Method: first (empty queue)", () => {
     expect(queue.length()).toBe(0);
     expect(() => {
       queue.first();
@@ -90,7 +90,7 @@ describe("Test Class: Queue", () => {
     expect(queue.length()).toBe(0);
   });
 
-  test("Test Function: add", () => {
+  test("Test Method: add", () => {
     queue.add(1);
     queue.add(2);
     queue.add(3);
@@ -100,19 +100,19 @@ describe("Test Class: Queue", () => {
     expect(queue.length()).toBe(5);
   });
 
-  test("Test Function: rem", () => {
+  test("Test Method: rem", () => {
     expect(queue.length()).toBe(5);
     expect(queue.rem()).toBe(1);
     expect(queue.length()).toBe(4);
   });
 
-  test("Test Function: first", () => {
+  test("Test Method: first", () => {
     expect(queue.length()).toBe(4);
     expect(queue.first()).toBe(2);
     expect(queue.length()).toBe(4);
   });
 
-  test("Test Function: isInQueue", () => {
+  test("Test Method: isInQueue", () => {
     expect(queue.isInQueue(1)).toBeFalsy();
     expect(queue.isInQueue(-4)).toBeFalsy();
     expect(queue.isInQueue(0)).toBeFalsy();
@@ -123,7 +123,7 @@ describe("Test Class: Queue", () => {
     expect(queue.isInQueue(2)).toBeTruthy();
   });
 
-  test("Test Function: setEmpty", () => {
+  test("Test Method: setEmpty", () => {
     expect(queue.isEmpty()).toBeFalsy();
     expect(queue.length()).toBe(4);
     queue.setEmpty();
@@ -134,7 +134,7 @@ describe("Test Class: Queue", () => {
 
 describe("Test Class: PriorityQueue", () => {
   describe("Test Case: PriorityQueue with Minimum sort function", () => {
-    test("Test Function: constructor with sortByList", () => {
+    test("Test Method: constructor with sortByList", () => {
       const tempQueue = new utils.PriorityQueue(() => {
         return true;
       }, [2, 3, 4, 5]);
@@ -147,7 +147,7 @@ describe("Test Class: PriorityQueue", () => {
       })
     );
 
-    test("Test Function: constructor", () => {
+    test("Test Method: constructor", () => {
       expect(pQueue).toBeDefined();
       expect(pQueue).not.toBeNull();
       expect(pQueue.isEmpty()).toBeTruthy();
@@ -156,7 +156,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.sortByList).toBeNull();
     });
 
-    test("Test Function: remMax (empty queue)", () => {
+    test("Test Method: remMax (empty queue)", () => {
       expect(pQueue.items.length).toBe(0);
       expect(() => {
         pQueue.remMax();
@@ -164,7 +164,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.items.length).toBe(0);
     });
 
-    test("Test Function: remMax (remove last item)", () => {
+    test("Test Method: remMax (remove last item)", () => {
       expect(pQueue.items.length).toBe(0);
       pQueue.add(0);
       expect(pQueue.items.length).toBe(1);
@@ -172,7 +172,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.items.length).toBe(0);
     });
 
-    test("Test Function: max (empty queue)", () => {
+    test("Test Method: max (empty queue)", () => {
       expect(pQueue.items.length).toBe(0);
       expect(() => {
         pQueue.max();
@@ -180,7 +180,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.items.length).toBe(0);
     });
 
-    test("Test Function: add", () => {
+    test("Test Method: add", () => {
       pQueue.add(6);
       expect(pQueue.isEmpty()).toBeFalsy();
       expect(pQueue.sortFunction).not.toBeCalled();
@@ -207,34 +207,34 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.isEmpty()).toBeFalsy();
     });
 
-    test("Test Function: parent", () => {
+    test("Test Method: parent", () => {
       expect(pQueue.parent(1)).toBe(0);
       expect(pQueue.parent(4)).toBe(1);
       expect(pQueue.parent(5)).toBe(2);
       expect(pQueue.parent(78)).toBe(38);
     });
 
-    test("Test Function: left", () => {
+    test("Test Method: left", () => {
       expect(pQueue.left(0)).toBe(1);
       expect(pQueue.left(1)).toBe(3);
       expect(pQueue.left(2)).toBe(5);
       expect(pQueue.left(75)).toBe(151);
     });
 
-    test("Test Function: right", () => {
+    test("Test Method: right", () => {
       expect(pQueue.right(0)).toBe(2);
       expect(pQueue.right(1)).toBe(4);
       expect(pQueue.right(2)).toBe(6);
       expect(pQueue.right(75)).toBe(152);
     });
 
-    test("Test Function: setEmpty", () => {
+    test("Test Method: setEmpty", () => {
       expect(pQueue.isEmpty()).toBeFalsy();
       pQueue.setEmpty();
       expect(pQueue.isEmpty()).toBeTruthy();
     });
 
-    test("Test Function: buildMaxHeap", () => {
+    test("Test Method: buildMaxHeap", () => {
       let newList = [
         437,
         547,
@@ -348,7 +348,7 @@ describe("Test Class: PriorityQueue", () => {
       }
     });
 
-    test("Test Function: remMax", () => {
+    test("Test Method: remMax", () => {
       expect(pQueue.items.length).toBe(100);
       expect(pQueue.remMax()).toBe(5);
       expect(pQueue.items.length).toBe(99);
@@ -375,7 +375,7 @@ describe("Test Class: PriorityQueue", () => {
       }
     });
 
-    test("Test Function: max", () => {
+    test("Test Method: max", () => {
       expect(pQueue.items.length).toBe(97);
       pQueue.add(17);
       expect(pQueue.items.length).toBe(98);
@@ -383,7 +383,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.items.length).toBe(98);
     });
 
-    test("Test Function: swap", () => {
+    test("Test Method: swap", () => {
       expect(pQueue.items[23]).toBe(139);
       expect(pQueue.items[85]).toBe(696);
       pQueue.swap(23, 85);
@@ -392,7 +392,7 @@ describe("Test Class: PriorityQueue", () => {
       pQueue.buildMaxHeap();
     });
 
-    test("Test Function: isInQueue", () => {
+    test("Test Method: isInQueue", () => {
       expect(pQueue.isInQueue(5)).toBeFalsy();
       expect(pQueue.isInQueue(22)).toBeFalsy();
       expect(pQueue.isInQueue(0)).toBeFalsy();
@@ -406,7 +406,7 @@ describe("Test Class: PriorityQueue", () => {
       expect(pQueue.isInQueue(17)).toBeFalsy();
     });
 
-    test("Test Function: sink", () => {
+    test("Test Method: sink", () => {
       pQueue.buildMaxHeap();
 
       const biggestChildIndex =
@@ -447,14 +447,14 @@ describe("Test Class: PriorityQueue", () => {
       { index: 5, cost: 4 },
     ];
 
-    test("Test Function: setSortByList", () => {
+    test("Test Method: setSortByList", () => {
       expect(pQueue.sortByList).toBeNull();
       pQueue.setSortByList(vertices);
       expect(pQueue.sortByList).not.toBe(vertices);
       expect(pQueue.sortByList).toEqual(vertices);
     });
 
-    test("Test Function: add", () => {
+    test("Test Method: add", () => {
       pQueue.add(0);
       expect(pQueue.sortFunction).not.toBeCalled();
       pQueue.add(1);

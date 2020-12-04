@@ -6,13 +6,13 @@ const {
 let { Color } = require("../graph_algorithm_utils/algorithm_utils");
 
 describe("Test Class: AlgorithmSteps", () => {
-  test("Test Function: constructor (empty)", () => {
+  test("Test Method: constructor (empty)", () => {
     expect(() => {
       new AlgorithmSteps();
     }).toThrow("Algorithm's JSON file was not found.");
   });
 
-  test("Test Function: constructor with BFS", () => {
+  test("Test Method: constructor with BFS", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.BFS);
     expect(algorithmSteps.algorithmType).toBe("Breadth-First Search");
     expect(algorithmSteps.algorithmDescription).toBe(
@@ -20,7 +20,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with DFS", () => {
+  test("Test Method: constructor with DFS", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.DFS);
     expect(algorithmSteps.algorithmType).toBe("Depth-First Search");
     expect(algorithmSteps.algorithmDescription).toBe(
@@ -28,7 +28,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with TOPO", () => {
+  test("Test Method: constructor with TOPO", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.TOPO);
     expect(algorithmSteps.algorithmType).toBe("Topological order");
     expect(algorithmSteps.algorithmDescription).toBe(
@@ -36,7 +36,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with TOPO-DFS", () => {
+  test("Test Method: constructor with TOPO-DFS", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.TOPO_DFS);
     expect(algorithmSteps.algorithmType).toBe(
       "Topological order with Depth-First Search"
@@ -46,7 +46,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with KRUSKAL", () => {
+  test("Test Method: constructor with KRUSKAL", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.KRUSKAL);
     expect(algorithmSteps.algorithmType).toBe(
       "Kruskal algorithm for minimum-spanning-tree"
@@ -56,7 +56,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with PRIM", () => {
+  test("Test Method: constructor with PRIM", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.PRIM);
     expect(algorithmSteps.algorithmType).toBe(
       "Prim's algorithm for minimum-spanning-tree"
@@ -66,7 +66,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with DIJKSTRA", () => {
+  test("Test Method: constructor with DIJKSTRA", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.DIJKSTRA);
     expect(algorithmSteps.algorithmType).toBe(
       "Dijkstra's Shortest Path First algorithm"
@@ -76,7 +76,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with QBBF", () => {
+  test("Test Method: constructor with QBBF", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.QBBF);
     expect(algorithmSteps.algorithmType).toBe(
       "Queue-based Bellman-Ford algorithm (shortest path)"
@@ -86,7 +86,7 @@ describe("Test Class: AlgorithmSteps", () => {
     );
   });
 
-  test("Test Function: constructor with FW", () => {
+  test("Test Method: constructor with FW", () => {
     const algorithmSteps = new AlgorithmSteps(AlgorithmType.FW);
     expect(algorithmSteps.algorithmType).toBe(
       "Floyd-Warshall algorithm (shortest path)"
@@ -97,14 +97,14 @@ describe("Test Class: AlgorithmSteps", () => {
   });
 
   let algorithmSteps = new AlgorithmSteps(AlgorithmType.BFS);
-  test("Test Function: constructor (general)", () => {
+  test("Test Method: constructor (general)", () => {
     expect(algorithmSteps.steps).not.toBeNull();
     expect(algorithmSteps.currentStepIndex).not.toBeNull();
     expect(algorithmSteps.steps).toEqual([]);
     expect(algorithmSteps.currentStepIndex).toBe(0);
   });
 
-  test("Test Function: addStep", () => {
+  test("Test Method: addStep", () => {
     expect(algorithmSteps.steps.length).toBe(0);
     algorithmSteps.addStep({ obj: true, index: 0 });
     expect(algorithmSteps.steps.length).toBe(1);
@@ -113,7 +113,7 @@ describe("Test Class: AlgorithmSteps", () => {
 });
 
 describe("Test Class: Algorithm", () => {
-  describe("Test Function: bfs", () => {
+  describe("Test Method: bfs", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.bfs({ directed: false }, 0);
@@ -183,7 +183,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: dfs", () => {
+  describe("Test Method: dfs", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.dfs({ directed: false }, 0);
@@ -268,7 +268,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: topo", () => {
+  describe("Test Method: topo", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.topo({ directed: false }, 0);
@@ -366,7 +366,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: topoWithDFS", () => {
+  describe("Test Method: topoWithDFS", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.topoWithDFS({ directed: false }, 0);
@@ -434,7 +434,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: kruskalMST", () => {
+  describe("Test Method: kruskalMST", () => {
     test("Test Case: invalid vertex index in Edge", () => {
       const invalidGraph = {
         directed: false,
@@ -722,7 +722,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: primMST", () => {
+  describe("Test Method: primMST", () => {
     let graphPRIM = {
       directed: false,
       noOfVertices: 6,
@@ -837,7 +837,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: queueBasedBF", () => {
+  describe("Test Method: queueBasedBF", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.queueBasedBF({ directed: false }, 0);
@@ -916,7 +916,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: dijkstra", () => {
+  describe("Test Method: dijkstra", () => {
     test("Test Case: undirected graph error", () => {
       expect(() => {
         Algorithm.dijkstra({ directed: false }, 0);
@@ -1057,7 +1057,7 @@ describe("Test Class: Algorithm", () => {
     });
   });
 
-  describe("Test Function: floydWarshall", () => {
+  describe("Test Method: floydWarshall", () => {
     let graphFW = {
       directed: true,
       noOfVertices: 4,
